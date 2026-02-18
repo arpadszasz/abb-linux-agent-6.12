@@ -18,6 +18,7 @@ AGENT_VERSION="3.1.0-4968"
 AGENT_BUILD_TAG="4968"
 SYNOSNAP_VERSION="0.11.6"
 OUTPUT_DIR="${OUTPUT_DIR:-$(pwd)}"
+TEMP_DIR="${TEMP_DIR:-/tmp}"
 
 # Colors
 RED='\033[0;31m'
@@ -40,7 +41,7 @@ if [ $# -lt 1 ]; then
 fi
 
 INPUT="$1"
-WORKDIR=$(mktemp -d "/tmp/abb-rebuild.XXXXXX")
+WORKDIR=$(mktemp -d "$TEMP_DIR/abb-rebuild.XXXXXX")
 trap 'rm -rf "$WORKDIR"' EXIT
 
 info "Work directory: $WORKDIR"
